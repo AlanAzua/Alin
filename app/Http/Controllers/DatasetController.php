@@ -30,8 +30,6 @@ class DatasetController extends Controller
      $response=HTTP::get($url.'/cotizaciones?desde=2022-12-22&hasta=2023-02-22');
      $datasetsArray= $response->json();
      return json_encode($datasetsArray);
-     
-      return  json_encode($numcot);
       
     }
     public function precios() {

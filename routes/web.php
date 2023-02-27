@@ -32,7 +32,6 @@ Route::resource('datasets', DatasetController::class);
 Route::get('/export', [ExportController::class, 'exportExcel']);
 Route::get('/export/cotizaciones', [ExportController::class, 'exportCoti']);
 Route::get('/export/precios', [ExportController::class, 'exportPrecios']);
-Route::get('/numcot', [DatasetController::class, 'cotizaciones']);
 
 Route::middleware([
     'auth:sanctum',

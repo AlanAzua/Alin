@@ -5,6 +5,7 @@ namespace App\Exports;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
