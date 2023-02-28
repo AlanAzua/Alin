@@ -27,7 +27,7 @@ class DatasetController extends Controller
     public function cotizaciones()
     {
     $url= env('URL_SERVER_API','http://localhost:8080');
-     $response=HTTP::get($url.'/cotizaciones?desde=2022-12-22&hasta=2023-02-22');
+     $response=HTTP::get($url.'/cotizaciones?desde=2022-12-28&hasta=2023-02-28');
      $datasetsArray= $response->json();
      return json_encode($datasetsArray);
       

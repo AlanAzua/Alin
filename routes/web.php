@@ -52,16 +52,8 @@ Route::group(['prefix' => 'index'], function () {
 Route::get('/cotizaciones', function () {
     return view('dataset.cotizaciones');
 });
-Route::get('/cotizaciones/{numcot}', function ($numcot) { 
-    return "Mostrando el producto $numcot";
- })->name('coti-numcot');
 });
-/*Route::get('index/cotizaciones', function () {
-    return view('dataset.cotizaciones');
-});
-Route::get('index/cotizaciones/{numcot}', function (string $numcot) {
-    return 'Cotizacion '.$numcot;
-});*/
+
 Route::get('index/precios', function () {
     return view('dataset.precios');
 });

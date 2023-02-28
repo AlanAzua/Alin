@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="modal" id="ModalDetalle" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-xl ">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-xl modal-dialog-scrollable ">
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLabel">Detalle Cotizacion</h5>
@@ -118,8 +118,8 @@ $(function(){
                     tabla+=`<tr><td>`+js[i].numcot+`</td><td>`+js[i].ejecutivo+`</td><td>`+js[i].equipo_coti+`</td><td>`
                     +js[i].codven+`</td><td>`+js[i].activa+`</td><td>`+js[i].cencos+`</td><td>`+js[i].fecemi+`</td><td>`
                     +js[i].rutcli+`</td><td>`+js[i].id+`</td><td>`+js[i].razons+`</td><td>`+js[i].negocio_eerr+`</td><td>`
-                    +`<button type="button" class="btn btn-info boton-modal"  data-toggle="modal" data-target="#ModalDetalle" onClick="tablaModal()"><i class="fa fa-table"></i></button>`
-                    +`</td></tr>`;
+                    +`<button type="button" class="btn btn-info boton-modal"  data-toggle="modal" data-target="#ModalDetalle" onClick="tablaModal(`+js[i].numcot+`)"><i class="fa fa-table"></i></button>`
+                    +`</td><tr>`;
 
                 }
             
@@ -139,9 +139,9 @@ $(function(){
             tablaModal();    
             }); 
         });
-        function tablaModal() {
+        function tablaModal(numcot) {
             $.ajax({
-                url: '{{route('api-coti')}}',
+                url: '{{route('api-coti')}}'+'/'+numcot,
                 type: 'GET',
                 datatype:'json',
                 async: true,
@@ -150,12 +150,13 @@ $(function(){
                     js = js.data;
                     var jj;
                     var tabla;
+                    
                     for (var i=0; i < js.length; i++){
                         for(var j=0; j< js[i].detalle_cotizacion.length; j++){
                             jj = js[i].detalle_cotizacion[j];
-                            tablaModal+=`<tr><td>`+ jj.NUMCOT+`</td><td>`+jj.fecven+`</td><td>`+jj.cantid+`</td><td>`+jj.precio+`</td><td>`+
-                            jj.prelis+`</td><td>`+jj.q_analisis+`</td><td>`+jj.codpro+`</td><td>`+jj.despro+`</td><td>`+
-                            jj.linea_principal+`</td><tr>`;
+                            tablaModal+=`<tr><td>`+jj.NUMCOT+`</td><td>`+jj.fecven+`</td><td>`+jj.cantid+`</td><td>`
+                            +jj.precio+`</td><td>`+jj.prelis+`</td><td>`+jj.q_analisis+`</td><td>`+jj.codpro+`</td><td>`
+                            +jj.despro+`</td><td>`+jj.linea_principal+`</td><tr>`;
                         }
                     }
                     $('#tablaMo').html(tablaModal);
@@ -164,7 +165,9 @@ $(function(){
 
             });
         }
-
+        $('#actualizar').click(function(){
+        tablaModal(numcot);
+        });
         
 
     

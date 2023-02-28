@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/lala', [DatasetController::class, 'index'])->name('api-lala');
 Route::get('/coti', [DatasetController::class, 'cotizaciones'])->name('api-coti');
+Route::get('/coti/{numcot}', [DatasetController::class, 'cotizaciones'])->name('api-cotizacion');
 Route::get('/precios', [DatasetController::class, 'precios'])->name('api-precios');
+Route::get('/precios/{codpro}', [DatasetController::class, 'precios'])->name('api-preci');
